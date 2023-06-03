@@ -1,0 +1,227 @@
+body {
+
+    display: flex;
+
+}
+
+.leaderboard {
+
+    display: flex;
+    width: 100%;
+    cursor: none;
+
+}
+
+.leaderboard ul {
+
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 10px;
+    overflow: hidden;
+    padding-left: 45px;
+
+}
+
+
+.leaderboard ul li {
+
+    position: relative;
+    list-style: none;
+
+}
+
+.leaderboard ul li span {
+
+    position: absolute;
+    padding: 0;
+    left: -40px;
+    top: 10px;
+}
+
+.leaderboard ul li span:before {
+
+    position: relative;
+    content: "#";
+
+}
+
+.leaderboard ul li div {
+
+    background-color: #1D2237;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+}
+
+.leaderboard ul li i {
+
+    font-size: 10px;
+    padding-left: 5px;
+
+}
+
+.leaderboard .best {
+
+    width: 50%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.leaderboard .best .grid {
+
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 57px;
+    padding: 40px 0;
+    align-content: center;
+
+}
+
+.leaderboard .best .stats {
+
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    font-size: 23px;
+
+}
+
+.leaderboard .podium {
+
+    display: flex;
+
+    flex-direction: column;
+    position: relative;
+
+    counter-increment: position;
+
+}
+
+.leaderboard .podium:after {
+
+    content: "#"counter(position);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1d2237;
+    left: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid rgb(255 255 255 / 6%);
+    font-size: 11px;
+    margin: auto;
+    top: -19px;
+
+}
+
+.leaderboard .podium > * {
+
+    padding: 12px 16px;
+
+    background-color: #1D2237;
+}
+
+
+.leaderboard .podium div {
+
+    position: relative;
+    width: fit-content;
+    margin: auto;
+    font-size: 23px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0px -3px 0px #5ea9e1;
+
+}
+
+.leaderboard .podium span {
+
+    border-radius: 10px;
+
+    width: fit-content;
+
+    margin: auto;
+
+    font-size: 12px;
+}
+
+.leaderboard .podium:first-child {
+
+    flex: 1 1 100%;
+    transform: scale(1.4);
+
+}
+
+.leaderboard .podium:first-child div:after,
+.leaderboard .podium:nth-child(2) div:after,
+.leaderboard .podium:nth-child(3) div:after {
+
+    content: " ";
+    position: absolute;
+    -webkit-mask-image: url(/assets/image/crown.svg);
+    background-repeat: no-repeat;
+    height: 35px;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: space;
+    width: 39px;
+    background-size: contain;
+    top: -14px;
+    right: -18px;
+
+}
+
+.leaderboard .podium:first-child div:after {
+
+    background-color: #ECFF0C;
+
+}
+
+.leaderboard .podium:nth-child(2) div:after {
+
+    background-color: #FCFCFC;
+
+}
+
+.leaderboard .podium:nth-child(3) div:after {
+
+    background-color: #FF993B;
+
+}
+
+.leaderboard .podium:nth-child(2), .leaderboard .podium:nth-child(3) {
+
+    flex: 0 1 35%;
+    transform: scale(1.2);
+
+}
+
+.leaderboard .footer {
+
+    height: 39px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+
+}
+
+
+.leaderboard .footer img {
+
+    width: 67px;
+    height: 39px;
+
+}

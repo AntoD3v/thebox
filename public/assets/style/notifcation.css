@@ -1,0 +1,90 @@
+:root {
+
+    --background-color-information: #7F7EFF;
+    --color-information: #fff;
+    --background-color-error: #DE636F;
+    --color-error: #fff;
+    --background-color-warning: #FFAE42;
+    --color-warning: #fff;
+    --background-color-success: #AFC765;
+    --color-success: #fff;
+
+}
+
+.notification_container {
+
+    position: absolute;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    z-index: 100;
+    top: 0;
+
+}
+
+.notification_container div {
+
+    display: flex;
+    padding: 15px;
+    margin: 10px 0;
+    transform: translateY(10px);
+    text-align: center;
+    font-weight: 700;
+    width: auto;
+    border-radius: 10px;
+
+}
+
+.notification_container div.close{
+
+    animation: opening ease-in-out 300ms reverse;
+
+}
+
+.notification_container div.open{
+
+    animation: opening ease-in-out 300ms;
+
+}
+
+@keyframes opening {
+
+    from {
+        transform: translateY(-100vh);
+    }
+
+    to {
+        transform: translateY(10px);
+    }
+
+}
+
+.notification_container div.info {
+
+    background-color: var(--background-color-information);
+    color: var(--color-information);
+
+}
+
+.notification_container div.error {
+
+    background-color: var(--background-color-error);
+    color: var(--color-error);
+
+}
+
+.notification_container div.warning {
+
+    background-color: var(--background-color-warning);
+    color: var(--color-warning);
+
+}
+
+.notification_container div.success {
+
+    background-color: var(--background-color-success);
+    color: var(--color-success);
+
+}

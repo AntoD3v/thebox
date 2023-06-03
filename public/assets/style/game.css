@@ -1,0 +1,347 @@
+.toolbar {
+
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+.toolbar .actions {
+
+    display: flex;
+    gap: 10px;
+
+}
+
+.toolbar #status {
+
+    display: flex;
+    border-radius: 5px;
+    border: 2px solid #464646;
+
+}
+
+.toolbar #status span {
+
+    display: flex;
+    padding: 12px 12px 12px 15px;
+
+    font-weight: 700;
+    font-size: 10px;
+
+}
+
+.toolbar #status span:before {
+
+    content: " ";
+    position: relative;
+    top: 2px;
+    right: 5px;
+    width: 8px;
+    height: 8px;
+    background-color: orangered;
+    border-radius: 50%;
+
+}
+
+.toolbar #status span.online:before {
+
+    background-color: greenyellow;
+
+}
+
+main {
+
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+}
+
+section {
+
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+
+    height: 100%;
+
+}
+
+section h1 {
+
+    font-size: 60px;
+
+}
+
+section b {
+
+    color: orangered;
+
+}
+
+section.setup img{
+
+    margin: 0 auto;
+    width: 100px;
+
+}
+
+section.setup h1{
+
+    font-size: 30px;
+
+}
+
+section.setup select{
+
+    padding: 10px;
+
+}
+
+section.setup > div{
+
+    display: flex;
+    width: 200px;
+    margin: 0 auto;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+section.register label {
+
+    position: relative;
+
+}
+
+section.register label i {
+
+    position: absolute;
+    right: 48px;
+    top: 20px;
+    transform: scale(1.5);
+    color: orangered;
+
+}
+
+.gg-check {
+
+    color: greenyellow!important;
+
+}
+
+section.register input {
+
+    font-size: 40px;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 0;
+    border-bottom: 1px solid white;
+    font-family: "Poppins", sans-serif;
+
+}
+
+section.register input:focus {
+
+    outline: none;
+    border-bottom: 1px solid orangered;
+
+}
+
+section.register p {
+    width: 400px;
+    color: grey;
+    font-size: 12px;
+    margin: 20px auto;
+}
+
+
+/* source: https://codepad.co/snippet/big-red-button */
+section.waiting {
+
+    --button-height: 50px;
+    --button-width: 230px;
+
+}
+
+section.waiting .button_container {
+
+    position: relative;
+    display: flex;
+    height: 210px;
+
+}
+
+section.waiting .press_button {
+
+    box-shadow: 0 17px 0 15px #352d2d, 0 18px 0 24px #000000;
+    cursor: pointer;
+    background-color: #c0392b;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    width: var(--button-width);
+    height: var(--button-height);
+    transform: translateX(-50%);
+
+}
+
+section.waiting .press_button:before {
+
+    content: '';
+    z-index: 1;
+    border-radius: 50%;
+    background-color: #e74c3c;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    transition: bottom 0.4s;
+    width: var(--button-width);
+    height: var(--button-height);
+
+}
+
+section.waiting .press_button:after {
+    content: '';
+    background-color: #c0392b;
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    transition: height 0.4s;
+    width: var(--button-width);
+    height: var(--button-height);
+}
+
+section.waiting .press_button:active:after {
+
+    height: 10%;
+
+}
+
+section.waiting .press_button:active:before {
+
+    bottom: 10%;
+
+}
+
+section.waiting h3 {
+
+    color: gray;
+    font-size: 13px;
+    animation: rebound 1000ms infinite;
+
+}
+
+@keyframes rebound {
+
+    0% {
+        transform: scale(1.00);
+    }
+    50% {
+        transform: scale(1.06);
+    }
+    100% {
+        transform: scale(1.00);
+    }
+
+}
+
+section.game h1, section.result h1 {
+
+    margin-top: 10px;
+    font-size: 100px;
+
+}
+
+section.game h1 i {
+
+    font-size: 50px;
+    width: 90px;
+    display: contents;
+
+}
+
+section.game h1 span {
+
+    font-size: 40px;
+
+}
+
+section.result > img {
+
+    display: flex;
+    margin: 10px auto;
+    width: 100px;
+
+}
+
+section.result h1 span {
+
+    font-size: 24px;
+
+}
+
+
+section.result h1 i {
+
+    font-size: 45px;
+
+}
+
+section .box_container {
+
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+
+}
+
+section .box_container > div {
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+section .box_container img {
+
+    width: 100px;
+
+}
+
+section .box_container span {
+
+    font-size: 20px;
+    font-weight: 600;
+
+}
+
+section .box_container span i {
+
+    font-size: 15px;
+    font-style: normal;
+
+}
+
+
+.footer {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+}
+
+.footer img {
+
+    width: 75px;
+
+}

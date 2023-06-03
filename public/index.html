@@ -1,0 +1,229 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Lockpicking</title>
+
+    <link rel="stylesheet" href="/assets/style/main.css"/>
+    <link rel="stylesheet" href="/assets/style/game.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+    <div class="container">
+
+
+        <div class="toolbar">
+
+            <div class="actions">
+
+                <button class="icon"><i class="gg-arrow-left"></i></button>
+
+                <button class="icon" onclick="socket.emit('reset')"><i class="gg-redo"></i></button>
+
+
+            </div>
+
+            <div id="status">
+                <span>OFFLINE</span>
+            </div>
+
+        </div>
+
+        <main>
+
+            <section class="setup" >
+
+                <img src="assets/image/settings.svg"/>
+
+                <h1>Configuration</h1>
+                <h3>Selectionne l'entrée utilé pour cette page</h3>
+
+                <div>
+
+                    <select id="setup_select">
+
+                        <option disabled selected>Choisissez le port</option>
+
+                    </select>
+
+                    <button onclick="set_port_com()">Valider</button>
+
+                </div>
+
+
+            </section>
+
+            <section class="register username" style="display: none">
+
+                <h1>Prêt à en découdre !</h1>
+                <h3>Donne ton nom de code</h3>
+
+                <label>
+
+                    <input type="text" value="" autocomplete="off" name="username" autofocus aria-autocomplete="none" />
+
+                    <i id="user_available"></i>
+
+                </label>
+
+
+            </section>
+
+            <section class="register contact" style="display: none">
+
+                <h1>Bonjour <b>AntoDev</b>, une dernière chose</h1>
+                <h3>Donne un moyen de te recontacter (e-mail / téléphone / discord et bien d'autres)</h3>
+
+                <label>
+
+                    <input type="text" autocomplete="false" name="contact" autofocus/>
+
+                </label>
+
+                <p>
+                    Cette information sera utilisé pour contacter les gagnants de l'évennement.
+                    Si vous ne souhaitez pas donner une information, laisser vide.
+                    Toutes les données seront supprimé a la fin de l'évenement
+                </p>
+
+            </section>
+
+            <section class="waiting" style="display: none">
+
+                <h1>Prêt <b>AntoDev</b> ?</h1>
+                <h2>Tu as 5 minutes et pas une de plus pour ouvrir les 4 boites</h2>
+
+                <div class="button_container">
+
+                    <div class="press_button" onclick="start_challenge()"></div>
+
+                </div>
+
+                <h3>Appuie sur le bouton a gauche des boites</h3>
+
+            </section>
+
+            <section class="game" style="display: none">
+
+                <h2>Session de <b>AntoDev</b></h2>
+
+                <h1>0:00<br><span>/ 5:00</span></h1>
+
+                <div class="box_container" id="game_boxes">
+
+                    <div>
+
+                        <img src="assets/image/box.svg"/>
+
+                        <span>0</span>
+
+                    </div>
+
+                    <div>
+
+                        <img src="assets/image/box.svg"/>
+
+                        <span>-</span>
+
+                    </div>
+
+                    <div>
+
+                        <img src="assets/image/box.svg"/>
+
+                        <span>-</span>
+
+                    </div>
+
+                    <div>
+
+                        <img src="assets/image/box.svg"/>
+
+                        <span>-</span>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+            <section class="result" style="display: none">
+
+
+                <img src="assets/image/padlock.svg"/>
+
+                <h2>Résultat de <b>AntoDev</b></h2>
+
+                <h1 id="score"></h1>
+
+                <div class="box_container" id="score_boxes">
+
+                    <div>
+
+                        <img src="assets/image/box_failed.svg"/>
+
+                        <span>-</span>
+
+                    </div>
+
+                    <div>
+
+                        <img src="assets/image/box_failed.svg"/>
+
+                        <span>-</span>
+
+                    </div>
+
+                    <div>
+
+                        <img src="assets/image/box_failed.svg"/>
+
+                        <span>-</span>
+
+                    </div>
+
+                    <div>
+
+                        <img src="assets/image/box_failed.svg"/>
+
+                        <span>-</span>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <div class="footer">
+
+            <img src="assets/image/esiea.png"/>
+            <span>✕</span>
+            <img src="assets/image/lockpicking.png"/>
+            <span>✕</span>
+            <img src="assets/image/lehack.svg"/>
+
+        </div>
+    </div>
+
+</body>
+
+<script src="https://cdn.socket.io/4.6.2/socket.io.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="/assets/js/modal.js"></script>
+<script src="/assets/js/notification.js"></script>
+<script src="/assets/js/game.js"></script>
+
+<script>
+
+   // window.onbeforeunload = () => "Voulez-vous vraiment quitter la page";
+
+</script>
+
+</html>
