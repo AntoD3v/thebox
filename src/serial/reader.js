@@ -1,17 +1,21 @@
-const {SerialPort} = require("serialport");
+const {SerialPort, ReadlineParser} = require("serialport");
 
 const BAUD_RATE = 9600;
 
-const createSerial = (com, callback) => new SerialPort({ path: com, baudRate: BAUD_RATE, autoDestroy: true }, callback);
+const parser = new ReadlineParser()
+const createSerial = (com, callback) => {
+    let serial =  new SerialPort({path: com, baudRate: BAUD_RATE, autoDestroy: true}, callback);
+    serial.pipe(parser)
+    return serial;
+};
 
 const on = (serial, event, callback) => {
 
-    serial.on("data", (data) => {
+    parser.on("data", (data) => {
 
-        console.log(data);
+        data = data.toString('utf8').trim();
         if(data.startsWith(event)) {
-            
-           data = data.replace(event, "");
+            console.log(data)
            callback(data);
             
         }

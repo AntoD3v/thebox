@@ -135,6 +135,8 @@ window.onload = () => {
         });
 
 
+        socket.on("push_notification", (notif) => pushNotification(notif));
+
     })
 
     socket.on("box_update", (boxes) => update_boxes(boxes))

@@ -1,6 +1,6 @@
 const serialport = require("../serial/index")
 const storage = require("../storage/database.js")
-const {REGISTRATION, IN_GAME, END} = require("./state");
+const {REGISTRATION, IN_GAME, END, WAITING} = require("./state");
 const {get_leaderboard} = require("./leaderboard");
 const SerialPort = require("serialport");
 
@@ -10,8 +10,8 @@ class Boxes {
 
     state;
     opened = 0;
-    time;
-    timer;
+    time = null;
+    timer = null;
 
     constructor(socket, serial) {
 
@@ -19,8 +19,8 @@ class Boxes {
         this.serial = serial;
 
         serial.on("close", () => this.socket.disconnect())
-        serialport.on(this.serial, "@start", this.start);
-        serialport.on(this.serial, "@press", this.press);
+        serialport.on(this.serial, "@start", () => this.start());
+        serialport.on(this.serial, "@press", () => this.press());
 
         let self = this;
         this.socket.on("register", (data) => self.register.call(self, data))
@@ -34,20 +34,19 @@ class Boxes {
 
     start() {
 
-        this.timer = setInterval(() => this.tick(), 10)
-        this.time = Date.now();
-        this.socket.emit("start");
+        if(this.state !== WAITING) {
 
-        this.state = IN_GAME;
+            this.socket.emit("push_notification", {type: "error", text: "Le jeu est déja démarré"});
 
-        for (let i = 1; i < 5; i++) {
-
-            setTimeout(() => {
-                this.press()
-            }, 1000 * i)
+            return;
 
         }
 
+        this.state = IN_GAME;
+
+        this.timer = setInterval(() => this.tick(), 10)
+        this.time = Date.now();
+        this.socket.emit("start");
 
     }
 
@@ -57,9 +56,7 @@ class Boxes {
 
         if(interval >= MAX_TIME) {
 
-            this.socket.emit("timeout", {
-
-            });
+            this.socket.emit("end");
 
             clearTimeout(this.timer);
 
@@ -109,6 +106,8 @@ class Boxes {
 
                 this.socket.emit("prestart");
 
+                this.state = WAITING;
+
             });
 
         })
@@ -126,13 +125,21 @@ class Boxes {
         this.state = REGISTRATION;
         this.box = [];
 
+
     }
 
     press() {
 
         if(this.state !== IN_GAME) {
 
-            socket.emit("push_notification", {type: "error", text: "Les boutons sont pressés mais le jeu n'est pas en route"});
+            this.socket.emit("push_notification", {type: "error", text: "Les boutons sont pressés mais le jeu n'est pas en route"});
+            return;
+
+        }
+
+        if(this.box.length > 4) {
+
+            this.socket.emit("push_notification", {type: "error", text: "Erreur interne (bouton)"});
             return;
 
         }

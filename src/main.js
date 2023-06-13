@@ -36,6 +36,8 @@ server.on(socket => {
 
             });
 
+            socket.serial = serial;
+
 
     })
 
@@ -54,7 +56,11 @@ server.on(socket => {
     socket.on("disconnect", () => {
 
         console.log(" - client")
-        if(socket.serial) socket.serial.close();
+        try {
+
+            if(socket.serial) socket.serial.close((e) => console.log("error durant la fermeture"));
+
+        }catch (e) {}
 
     });
 
