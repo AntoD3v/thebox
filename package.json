@@ -1,0 +1,22 @@
+{
+  "name": "thebox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -q src/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.0.1",
+    "express": "^4.18.2",
+    "scss": "^0.2.4",
+    "serialport": "^11.0.0",
+    "serve-static": "^1.15.0",
+    "socket.io": "^4.6.1",
+    "sqlite3": "^5.1.6"
+  }
+}
