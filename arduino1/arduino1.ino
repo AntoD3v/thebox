@@ -9,6 +9,7 @@ void setup() {
 
   delay(1000);
 
+  reset();
 }
 
 void loop() {

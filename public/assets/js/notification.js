@@ -1,6 +1,6 @@
 
 
-const pushNotification = ({type = "info", text="il faut te config !", timeout = 300000}) => {
+const pushNotification = ({type = "info", text="il faut te config !", timeout = 3000}) => {
 
     let container = document.querySelector(".notification_container");
 

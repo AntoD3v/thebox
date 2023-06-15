@@ -10,7 +10,7 @@ const get_leaderboard = (callback) => {
                 username: user.username,
                 boxes: temp,
                 open: temp.filter(e => e !== null).length,
-                total: temp.reduce((a, b) => a+b)
+                total: temp[temp.length - 1]
             }
         })
 

@@ -124,7 +124,7 @@ window.onload = () => {
             update_score_boxes(data.boxes);
 
             let score = document.getElementById("score");
-            score.innerHTML = format_time_msm(data.boxes.reduce((a,b) => a+b)) + "<br><span>Position #" + data.position + " • " + data.boxes.length + " boîte(s) ouverte(s)</span>";
+            score.innerHTML = format_time_msm(data.boxes[data.boxes.length - 1]) + "<br><span>Position #" + data.position + " • " + data.boxes.length + " boîte(s) ouverte(s)</span>";
 
         })
 
