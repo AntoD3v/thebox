@@ -3,6 +3,7 @@ const server = require("./server.js")
 const {Boxes} = require("./game/boxes.js")
 const serialport = require("./serial");
 const {get_leaderboard } = require("./game/leaderboard")
+const {get_users} = require("./storage/database");
 
 console.log("Lockpicking Software 2023")
 
@@ -50,6 +51,12 @@ server.on(socket => {
             socket.emit("leaderboard", lb)
 
         });
+
+    })
+
+    socket.on("db_get", () => {
+
+        get_users((callback) => socket.emit("db_get", callback));
 
     })
 

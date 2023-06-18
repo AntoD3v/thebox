@@ -9,12 +9,14 @@ const get_leaderboard = (callback) => {
             return {
                 username: user.username,
                 boxes: temp,
-                open: temp.filter(e => e !== null).length,
-                total: temp[temp.length - 1]
+                open: user.open,
+                total: user.total
+                //open: temp.filter(e => e !== null).length,
+                //total: temp[temp.length - 1]
             }
         })
 
-        users.sort((a, b) => {
+        /*users.sort((a, b) => {
 
             if(a.open !== b.open) return a.open > b.open ? -1 : 1;
 
@@ -23,7 +25,7 @@ const get_leaderboard = (callback) => {
 
             return a.total > b.total ? 1 : (a.total < b.total ? -1 : 0)
 
-        })
+        })*/
 
         if(users.length > 0) {
 

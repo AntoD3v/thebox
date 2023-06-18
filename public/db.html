@@ -1,0 +1,126 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Lockpicking</title>
+
+    <link rel="stylesheet" href="/assets/style/main.css"/>
+    <link rel="stylesheet" href="/assets/style/game.css"/>
+    <link rel="stylesheet" href="/assets/style/db.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+<div class="container">
+
+
+    <div class="toolbar">
+
+        <div class="actions">
+
+            <button class="icon"><i class="gg-games"></i></button>
+
+            <button class="icon" onclick="socket.emit('reset')"><i class="gg-redo"></i></button>
+
+
+        </div>
+
+        <div id="status">
+            <span>OFFLINE</span>
+        </div>
+
+    </div>
+
+    <main>
+
+        <section class="database">
+
+            <table>
+
+                <tr>
+
+                    <td>
+
+                        ID
+
+                    </td>
+
+                    <td>
+
+                        Name
+
+                    </td>
+
+
+                    <td>
+
+                        Contact
+
+                    </td>
+
+                    <td>
+
+                        Time #1
+
+                    </td>
+
+                    <td>
+
+                        Time #2
+
+                    </td>
+
+                    <td>
+
+                        Time #3
+
+                    </td>
+
+                    <td>
+
+                        Time #4
+
+                    </td>
+
+                    <td>
+
+                        Session du
+
+                    </td>
+
+                    <td>
+
+                        Actions
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+    </main>
+
+    <div class="footer">
+
+        <img src="assets/image/esiea.png"/>
+        <span>✕</span>
+        <img src="assets/image/lockpicking.png"/>
+        <span>✕</span>
+        <img src="assets/image/lehack.svg"/>
+
+    </div>
+</div>
+
+</body>
+
+<script src="/assets/js/socket.io.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/modal.js"></script>
+<script src="/assets/js/notification.js"></script>
+<script src="/assets/js/db.js"></script>
+
+</html>

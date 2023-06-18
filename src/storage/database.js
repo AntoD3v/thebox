@@ -50,7 +50,16 @@ const get_user = (username) => {
 
 const get_users = (callback) => {
 
-    db.all("SELECT username, contact, box_1, box_2, box_3, box_4 FROM challengers", (err, res) => {
+    db.all("SELECT\n" +
+        "        coalesce(box_1, 0) + coalesce(box_2, 0) + coalesce(box_3, 0) + coalesce(box_4, 0) as total,\n" +
+        "        CASE WHEN box_1 IS NOT NULL THEN 1 ELSE 0 END +\n" +
+        "        CASE WHEN box_2 IS NOT NULL THEN 1 ELSE 0 END +\n" +
+        "        CASE WHEN box_3 IS NOT NULL THEN 1 ELSE 0 END +\n" +
+        "        CASE WHEN box_4 IS NOT NULL THEN 1 ELSE 0 END AS open,\n" +
+        "        *\n" +
+        "FROM challengers\n" +
+        "WHERE open > 0\n" +
+        "ORDER BY open DESC, total ASC", (err, res) => {
 
         if(err == null) {
 

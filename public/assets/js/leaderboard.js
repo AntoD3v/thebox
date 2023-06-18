@@ -9,6 +9,7 @@ window.onload = () => {
 
         socket.on("leaderboard", (lb) => {
 
+            console.log(lb);
             fillBoard(lb);
 
         });
