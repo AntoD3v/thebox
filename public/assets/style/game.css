@@ -263,7 +263,7 @@ section.game h1 i {
 
     font-size: 50px;
     width: 90px;
-    display: contents;
+    display: inline-block;
 
 }
 

@@ -2,7 +2,6 @@ const serialport = require("../serial/index")
 const storage = require("../storage/database.js")
 const {REGISTRATION, IN_GAME, END, WAITING} = require("./state");
 const {get_leaderboard} = require("./leaderboard");
-const SerialPort = require("serialport");
 
 const MAX_TIME = 300000;
 
@@ -175,10 +174,15 @@ class Boxes {
 
             this.socket.broadcast.emit("leaderboard", lb)
 
+            let filter = lb.filter(e => e.username === this.username);
+
+            let position = filter.length > 0 ? filter[0].position : "-";
+
+
             this.socket.emit("score", {
 
                 boxes: this.box,
-                position: lb.filter(e => e.username === this.username)[0].position
+                position: position
 
             });
 
